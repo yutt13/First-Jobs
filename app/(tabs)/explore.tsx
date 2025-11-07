@@ -1,112 +1,176 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
+import React from 'react'
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 
-import { Collapsible } from '@/components/ui/collapsible';
-import { ExternalLink } from '@/components/external-link';
-import ParallaxScrollView from '@/components/parallax-scroll-view';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { IconSymbol } from '@/components/ui/icon-symbol';
-import { Fonts } from '@/constants/theme';
-
-export default function TabTwoScreen() {
+const explore = () => {
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#D0D0D0', dark: '#353636' }}
-      headerImage={
-        <IconSymbol
-          size={310}
-          color="#808080"
-          name="chevron.left.forwardslash.chevron.right"
-          style={styles.headerImage}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText
-          type="title"
-          style={{
-            fontFamily: Fonts.rounded,
-          }}>
-          Explore
-        </ThemedText>
-      </ThemedView>
-      <ThemedText>This app includes example code to help you get started.</ThemedText>
-      <Collapsible title="File-based routing">
-        <ThemedText>
-          This app has two screens:{' '}
-          <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> and{' '}
-          <ThemedText type="defaultSemiBold">app/(tabs)/explore.tsx</ThemedText>
-        </ThemedText>
-        <ThemedText>
-          The layout file in <ThemedText type="defaultSemiBold">app/(tabs)/_layout.tsx</ThemedText>{' '}
-          sets up the tab navigator.
-        </ThemedText>
-        <ExternalLink href="https://docs.expo.dev/router/introduction">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Android, iOS, and web support">
-        <ThemedText>
-          You can open this project on Android, iOS, and the web. To open the web version, press{' '}
-          <ThemedText type="defaultSemiBold">w</ThemedText> in the terminal running this project.
-        </ThemedText>
-      </Collapsible>
-      <Collapsible title="Images">
-        <ThemedText>
-          For static images, you can use the <ThemedText type="defaultSemiBold">@2x</ThemedText> and{' '}
-          <ThemedText type="defaultSemiBold">@3x</ThemedText> suffixes to provide files for
-          different screen densities
-        </ThemedText>
-        <Image
-          source={require('@/assets/images/react-logo.png')}
-          style={{ width: 100, height: 100, alignSelf: 'center' }}
-        />
-        <ExternalLink href="https://reactnative.dev/docs/images">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Light and dark mode components">
-        <ThemedText>
-          This template has light and dark mode support. The{' '}
-          <ThemedText type="defaultSemiBold">useColorScheme()</ThemedText> hook lets you inspect
-          what the user&apos;s current color scheme is, and so you can adjust UI colors accordingly.
-        </ThemedText>
-        <ExternalLink href="https://docs.expo.dev/develop/user-interface/color-themes/">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Animations">
-        <ThemedText>
-          This template includes an example of an animated component. The{' '}
-          <ThemedText type="defaultSemiBold">components/HelloWave.tsx</ThemedText> component uses
-          the powerful{' '}
-          <ThemedText type="defaultSemiBold" style={{ fontFamily: Fonts.mono }}>
-            react-native-reanimated
-          </ThemedText>{' '}
-          library to create a waving hand animation.
-        </ThemedText>
-        {Platform.select({
-          ios: (
-            <ThemedText>
-              The <ThemedText type="defaultSemiBold">components/ParallaxScrollView.tsx</ThemedText>{' '}
-              component provides a parallax effect for the header image.
-            </ThemedText>
-          ),
-        })}
-      </Collapsible>
-    </ParallaxScrollView>
-  );
+    <ScrollView style={styles.container}>
+      <View style={styles.header}>
+        <Text style={styles.title}>🔫 Gun Menu</Text>
+        <Text style={styles.subtitle}>รายการอุปกรณ์ (UI ตัวอย่างเท่านั้น)</Text>
+      </View>
+
+      <View style={styles.menuContainer}>
+        {/* Pistol */}
+        <TouchableOpacity style={styles.menuCard}>
+          <View style={styles.iconContainer}>
+            <Text style={styles.icon}>🔫</Text>
+          </View>
+          <View style={styles.infoContainer}>
+            <Text style={styles.itemName}>Pistol — ปืนพก</Text>
+            <Text style={styles.itemDescription}>
+              ปืนพกขนาดกะทัดรัด เหมาะสำหรับการพกพาและการฝึก (แสดงผลใน UI เท่านั้น)
+            </Text>
+            <Text style={styles.itemPrice}>฿12,000</Text>
+          </View>
+        </TouchableOpacity>
+
+        {/* Crossbow */}
+        <TouchableOpacity style={styles.menuCard}>
+          <View style={styles.iconContainer}>
+            <Text style={styles.icon}>🏹</Text>
+          </View>
+          <View style={styles.infoContainer}>
+            <Text style={styles.itemName}>Crossbow — คันศร</Text>
+            <Text style={styles.itemDescription}>
+              คันศรสำหรับกีฬาและการสาธิต ออกแบบให้จับถนัดมือ (ตัวอย่างเท่านั้น)
+            </Text>
+            <Text style={styles.itemPrice}>฿8,500</Text>
+          </View>
+        </TouchableOpacity>
+
+        {/* Knife */}
+        <TouchableOpacity style={styles.menuCard}>
+          <View style={styles.iconContainer}>
+            <Text style={styles.icon}>🗡️</Text>
+          </View>
+          <View style={styles.infoContainer}>
+            <Text style={styles.itemName}>Knife — มีดสนาม</Text>
+            <Text style={styles.itemDescription}>
+              มีดอเนกประสงค์สำหรับงานสนามและการฝึกฝน (แสดงเพื่อ UI เท่านั้น)
+            </Text>
+            <Text style={styles.itemPrice}>฿2,200</Text>
+          </View>
+        </TouchableOpacity>
+
+        {/* Shield */}
+        <TouchableOpacity style={styles.menuCard}>
+          <View style={styles.iconContainer}>
+            <Text style={styles.icon}>🛡️</Text>
+          </View>
+          <View style={styles.infoContainer}>
+            <Text style={styles.itemName}>Shield — โล่ป้องกัน</Text>
+            <Text style={styles.itemDescription}>
+              โล่น้ำหนักเบาสำหรับการฝึกป้องกัน เหมาะกับการใช้งานแบบสาธิต
+            </Text>
+            <Text style={styles.itemPrice}>฿3,800</Text>
+          </View>
+        </TouchableOpacity>
+
+        {/* Scope */}
+        <TouchableOpacity style={styles.menuCard}>
+          <View style={styles.iconContainer}>
+            <Text style={styles.icon}>🎯</Text>
+          </View>
+          <View style={styles.infoContainer}>
+            <Text style={styles.itemName}>Scope — กล้องเล็ง</Text>
+            <Text style={styles.itemDescription}>
+              กล้องเล็งคุณภาพ ปรับซูมได้ เพิ่มความแม่นยำในการเล็ง (UI เท่านั้น)
+            </Text>
+            <Text style={styles.itemPrice}>฿4,500</Text>
+          </View>
+        </TouchableOpacity>
+
+        {/* Accessory */}
+        <TouchableOpacity style={styles.menuCard}>
+          <View style={styles.iconContainer}>
+            <Text style={styles.icon}>🧨</Text>
+          </View>
+          <View style={styles.infoContainer}>
+            <Text style={styles.itemName}>Accessory — อุปกรณ์เสริม</Text>
+            <Text style={styles.itemDescription}>
+              ตัวอย่างอุปกรณ์เสริม เช่น ซอง ปรับแต่ง และอะแดปเตอร์ (ตัวอย่าง)
+            </Text>
+            <Text style={styles.itemPrice}>฿1,200</Text>
+          </View>
+        </TouchableOpacity>
+      </View>
+    </ScrollView>
+  )
 }
 
+export default explore
+
 const styles = StyleSheet.create({
-  headerImage: {
-    color: '#808080',
-    bottom: -90,
-    left: -35,
-    position: 'absolute',
+  container: {
+    flex: 1,
+    backgroundColor: '#f5f5f5',
   },
-  titleContainer: {
+  header: {
+    backgroundColor: '#0f3b2a', // deep green header
+    padding: 30,
+    paddingTop: 60,
+    alignItems: 'center',
+  },
+  title: {
+    fontSize: 32,
+    fontWeight: 'bold',
+    color: '#d6ffe8',
+    marginBottom: 5,
+  },
+  subtitle: {
+    fontSize: 16,
+    color: '#bfead0',
+  },
+  menuContainer: {
+    padding: 15,
+  },
+  menuCard: {
+    backgroundColor: '#fff',
+    borderRadius: 15,
+    padding: 15,
+    marginBottom: 15,
     flexDirection: 'row',
-    gap: 8,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
-});
+  iconContainer: {
+    width: 80,
+    height: 80,
+    backgroundColor: '#072b1f', // dark green block
+    borderRadius: 12,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: 15,
+  },
+  icon: {
+    fontSize: 36, // ปรับขนาดให้พอดี
+    lineHeight: 40,
+    color: '#9ef3c0', // mint icon color
+  },
+  infoContainer: {
+    flex: 1,
+    justifyContent: 'center',
+  },
+  itemName: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#072b1f', // deep green text
+    marginBottom: 5,
+  },
+  itemDescription: {
+    fontSize: 14,
+    color: '#3c4b44', // muted green-gray
+    marginBottom: 8,
+  },
+  itemPrice: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#066941', // accent green
+  },
+})
